@@ -49,7 +49,7 @@ class BotvarTests(RiveScriptTestCase):
             - Debug mode is: <env debug>
 
             + set debug mode *
-            - <env debug=<star>>Switched to <star>.
+            - <env debug=<person>>Switched to <person>.
 
             + are you testing
             - Testing: <env testing>

@@ -111,9 +111,31 @@ class ReplyTests(RiveScriptTestCase):
 
             + html test
             - <set name=<b>Name</b>>This has some non-RS <em>tags</em> in it.
+            
+            + i am from rus*
+            - You are from Russia?
+            
+            + i am from *lia
+            * <star> == brasi => You are from Brasilia?
+            - You are from big city?
+            
+            + hello my * *friend
+            - I love you, my <person>!
+            
+            + *
+            - Random reply
         """)
         self.reply("What is my name?", "Your name is undefined, right?")
         self.reply("My name is Alice", "OK.")
         self.reply("My name is Bob.", "I thought your name was Alice?")
         self.reply("What is my name?", "Your name is Bob, right?")
         self.reply("HTML Test", "This has some non-RS <em>tags</em> in it.")
+        self.reply("I am from Russia", "You are from Russia?")
+        self.reply("I am from RussiaFederation", "You are from Russia?")
+        self.reply("I am from Russia Federation", "Random reply")
+        self.reply("Hello my best friend", "I love you, my best!")
+        self.reply("Hello my best best friend", "I love you, my best best!")
+        self.reply("Hello my best little bestfriend", "I love you, my best little!")
+        self.reply("Hello my friend", "I love you, my !")
+        self.reply("I am from Brasilia", "You are from Brasilia?")
+        self.reply("I am from Sicilia", "You are from big city?")
