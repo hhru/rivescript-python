@@ -450,13 +450,8 @@ class Brain(object):
             regexp = regexp.replace(regexp[-2:], '( *|)')
         if regexp[:2] == '* ':
             regexp = regexp.replace(regexp[:2], '(|* )')
-        if '*' in regexp:
-            for i in range(len(regexp)):
-                if regexp[i] == '*':
-                    if (((regexp[i] == regexp[-1]) and regexp[-2].isalpha()) or
-                        (regexp[i] == regexp[0] and regexp[1].isalpha()) or
-                        (regexp[i+1].isalpha() or regexp[i-1].isalpha())):
-                        regexp = regexp[:i] + '(\w{0,})' + regexp[i+1:]
+
+        regexp = self.asterix_processing(regexp)
 
         # Simple replacements.
         regexp = regexp.replace('*', '(.*?)')   # Convert * into (.+?)
@@ -869,3 +864,13 @@ class Brain(object):
             "input": ["undefined"] * 9,
             "reply": ["undefined"] * 9,
         }
+
+    def asterix_processing(self, regexp):
+        if '*' in regexp:
+            for i in range(len(regexp)):
+                if regexp[i] == '*':
+                    if (((regexp[i] == regexp[-1]) and regexp[-2].isalpha()) or
+                        (regexp[i] == regexp[0] and regexp[1].isalpha()) or
+                        (regexp[i+1].isalpha() or regexp[i-1].isalpha())):
+                        regexp = regexp[:i] + '(\w{0,})' + regexp[i+1:]
+        return regexp
