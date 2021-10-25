@@ -449,7 +449,7 @@ class Brain(object):
         if regexp[-2:] == ' *':
             regexp = regexp.replace(regexp[-2:], '( *|)')
         if regexp[:2] == '* ':
-            regexp = regexp.replace(regexp[:2], '(| *)')
+            regexp = regexp.replace(regexp[:2], '(|* )')
         if '*' in regexp:
             for i in range(len(regexp)):
                 if regexp[i] == '*':
@@ -579,6 +579,7 @@ class Brain(object):
         """
         stars = ['']
         stars.extend(st)
+        stars = [star.strip() if star else star for star in stars]
         botstars = ['']
         botstars.extend(bst)
         if len(stars) == 1:

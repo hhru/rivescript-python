@@ -113,14 +113,14 @@ class ReplyTests(RiveScriptTestCase):
             - <set name=<b>Name</b>>This has some non-RS <em>tags</em> in it.
             
             + i am from rus*
-            - You are from Russia?
+            - Are you from Russia?
             
             + i am from *lia
-            * <star> == brasi => You are from Brasilia?
-            - You are from big city?
+            * <star> == brasi => Are you from Brasilia?
+            - Are you from big city?
             
             + hello my * *friend
-            - I love you, my <person>!
+            - I love you, my <star>!
             
             + *
             - Random reply
@@ -130,12 +130,12 @@ class ReplyTests(RiveScriptTestCase):
         self.reply("My name is Bob.", "I thought your name was Alice?")
         self.reply("What is my name?", "Your name is Bob, right?")
         self.reply("HTML Test", "This has some non-RS <em>tags</em> in it.")
-        self.reply("I am from Russia", "You are from Russia?")
-        self.reply("I am from RussiaFederation", "You are from Russia?")
+        self.reply("I am from Russia", "Are you from Russia?")
+        self.reply("I am from RussiaFederation", "Are you from Russia?")
         self.reply("I am from Russia Federation", "Random reply")
         self.reply("Hello my best friend", "I love you, my best!")
         self.reply("Hello my best best friend", "I love you, my best best!")
         self.reply("Hello my best little bestfriend", "I love you, my best little!")
         self.reply("Hello my friend", "I love you, my !")
-        self.reply("I am from Brasilia", "You are from Brasilia?")
-        self.reply("I am from Sicilia", "You are from big city?")
+        self.reply("I am from Brasilia", "Are you from Brasilia?")
+        self.reply("I am from Sicilia", "Are you from big city?")

@@ -35,6 +35,7 @@ class UnicodeTest(RiveScriptTestCase):
             - <sentence> who?
 
             + *
+            % * who
             - Haha! <sentence>!
 
             // And with UTF-8.
