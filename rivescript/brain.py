@@ -454,7 +454,7 @@ class Brain(object):
         regexp = self.asterix_processing(regexp)
 
         # Simple replacements.
-        regexp = regexp.replace('*', '(.*?)')   # Convert * into (.+?)
+        regexp = regexp.replace('*', '(.*?)')   # Convert * into (.*?)
         regexp = regexp.replace('#', '(\d+?)')  # Convert # into (\d+?)
         regexp = regexp.replace('_', '(\w+?)')  # Convert _ into (\w+?)
         regexp = re.sub(RE.weight, '', regexp)  # Remove {weight} tags, allow spaces before the bracket
@@ -866,11 +866,10 @@ class Brain(object):
         }
 
     def asterix_processing(self, regexp):
-        if '*' in regexp:
-            for i in range(len(regexp)):
-                if regexp[i] == '*':
-                    if (((regexp[i] == regexp[-1]) and regexp[-2].isalpha()) or
-                        (regexp[i] == regexp[0] and regexp[1].isalpha()) or
-                        (regexp[i+1].isalpha() or regexp[i-1].isalpha())):
-                        regexp = regexp[:i] + '(\w{0,})' + regexp[i+1:]
+        for i in range(len(regexp)):
+            if regexp[i] == '*':
+                if (((regexp[i] == regexp[-1]) and regexp[-2].isalpha()) or
+                    (regexp[i] == regexp[0] and regexp[1].isalpha()) or
+                    (regexp[i+1].isalpha() or regexp[i-1].isalpha())):
+                    regexp = regexp[:i] + '(\w{0,})' + regexp[i+1:]
         return regexp
