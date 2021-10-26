@@ -451,7 +451,7 @@ class Brain(object):
         if regexp[:2] == '* ':
             regexp = regexp.replace(regexp[:2], '(|* )')
 
-        regexp = self.asterix_processing(regexp)
+        regexp = self.asterisk_processing(regexp)
 
         # Simple replacements.
         regexp = regexp.replace('*', '(.*?)')   # Convert * into (.*?)
@@ -865,7 +865,7 @@ class Brain(object):
             "reply": ["undefined"] * 9,
         }
 
-    def asterix_processing(self, regexp):
+    def asterisk_processing(self, regexp):
         for i in range(len(regexp)):
             if regexp[i] == '*':
                 if (((regexp[i] == regexp[-1]) and regexp[-2].isalpha()) or
