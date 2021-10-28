@@ -13,6 +13,10 @@ class ReplyTests(RiveScriptTestCase):
             ! sub who's  = who is
             ! sub it's   = it is
             ! sub didn't = did not
+            ! array hi = hi|[hello] hi|welcome
+            
+            + (@hi)
+            - Hi Hi!
 
             + knock knock
             - Who's there?
@@ -28,6 +32,8 @@ class ReplyTests(RiveScriptTestCase):
             + *
             - I don't know.
         """)
+        self.reply("welcome", "Hi Hi!")
+        self.reply("Hello, Hi", "Hi Hi!")
         self.reply("knock knock", "Who's there?")
         self.reply("Canoe", "Canoe who?")
         self.reply("Canoe help me with my homework?", "Haha! Canoe help me with my homework!")
