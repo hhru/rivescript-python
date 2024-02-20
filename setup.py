@@ -1,11 +1,17 @@
 # rivescript-python setup.py
 
-import rivescript
+import os
+import sys
+
 from setuptools import setup
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
+from rivescript import __version__
 
 setup(
     name             = 'rivescript',
-    version          = rivescript.__version__,
+    version          = __version__,
     description      = 'A Chatterbot Scripting Language',
     long_description = 'A scripting language to make it easy to write responses for a chatterbot.',
     author           = 'Noah Petherbridge',

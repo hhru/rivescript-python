@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "rivescript"
+version = "1.0.0"
+description = "Python Rivescript engine"
+authors = ["hhdev <hh-dev@hh.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[build-system]
+build-backend = 'setuptools.build_meta'
+requires = [
+    'setuptools >= 43.0.0',
+    'six',
+    'nose',
+]
